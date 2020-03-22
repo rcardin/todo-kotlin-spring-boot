@@ -18,7 +18,7 @@ class ReactiveMongoConfig : AbstractReactiveMongoConfiguration() {
     override fun reactiveMongoClient(): MongoClient = mongoClient()
 
     override fun getDatabaseName(): String = "mongo"
-    
+
     @Bean
     override fun reactiveMongoTemplate(): ReactiveMongoOperations {
         return ReactiveMongoTemplate(mongoClient(), databaseName)
