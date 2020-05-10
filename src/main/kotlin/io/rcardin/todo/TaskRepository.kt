@@ -13,7 +13,7 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository
 interface TaskRepository : ReactiveCrudRepository<Task, String>
 
 @Configuration
-@EnableReactiveMongoRepositories
+@EnableReactiveMongoRepositories(basePackageClasses = [TaskRepository::class])
 class ReactiveMongoConfig : AbstractReactiveMongoConfiguration() {
     override fun reactiveMongoClient(): MongoClient = mongoClient()
 
@@ -25,5 +25,5 @@ class ReactiveMongoConfig : AbstractReactiveMongoConfiguration() {
     }
 
     @Bean
-    private fun mongoClient(): MongoClient = MongoClients.create()
+    fun mongoClient(): MongoClient = MongoClients.create()
 }
