@@ -10,9 +10,13 @@ import org.springframework.test.web.reactive.server.WebTestClient
 import java.time.LocalDateTime
 
 @ExtendWith(SpringExtension::class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        classes = [TodoApplication::class]
+)
 internal class TaskRoutersIT(
-        @Autowired val client: WebTestClient, @Autowired val repository: TaskRepository) {
+        @Autowired val client: WebTestClient,
+        @Autowired val repository: TaskRepository) {
 
     @Test
     fun `A user should get all the persisted tasks`() {
